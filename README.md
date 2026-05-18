@@ -1,4 +1,4 @@
-# 🧠 Python Quiz App — Web Version
+#  Python Quiz App — Web Version
 **Introduction to Programming 2 — Final Project**  
 Astana IT University | Group SE-2531
 
