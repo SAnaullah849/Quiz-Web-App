@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Quiz App — SE-2531</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --surface: #111811;
+    --border: #1e2e1e;
+    --green: #4ade80;
+    --green-dim: #166534;
+    --red: #f87171;
+    --yellow: #fbbf24;
+    --blue: #60a5fa;
+    --text: #e2e8f0;
+    --muted: #6b7280;
+    --card: #0d160d;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    max-width: 780px;
+    padding: 32px 24px 0;
+    text-align: center;
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 780px;
+    padding: 28px 24px 60px;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 28px;
+  }
+
+  .card-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"]:focus { border-color: var(--green); }
+
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .mode-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 14px 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+    line-height: 1.5;
+  }
+
+  .mode-btn:hover { border-color: var(--green-dim); color: var(--text); }
+  .mode-btn.selected { border-color: var(--green); color: var(--green); background: #0d200d; }
+
+  .mode-btn .mode-label { font-size: 13px; font-weight: 600; color: inherit; display: block; margin-bottom: 2px; }
+  .mode-btn .mode-desc { font-size: 10px; color: var(--muted); }
+  .mode-btn.selected .mode-desc { color: var(--green-dim); }
+
+  #category-row, #difficulty-row {
+    display: none;
+    margin-bottom: 20px;
+  }
+
+  select {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 12px 16px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  select:focus { border-color: var(--green); }
+
+  .btn {
+    display: inline-block;
+    background: var(--green);
+    color: #0a0f0a;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.5px;
+    width: 100%;
+  }
+
+  .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    width: auto;
+  }
+
+  .btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+  .error-msg {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--red);
+    margin-top: -12px;
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  /* Quiz screen */
+
+  .progress-bar-wrap {
+    background: var(--surface);
+    border-radius: 4px;
+    height: 4px;
+    margin: 24px 0 0;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: var(--green);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 24px;
+  }
+
+  .quiz-meta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .timer-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--yellow);
+    background: #1a1500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #3d3000;
+  }
+
+  .timer-display.danger { color: var(--red); background: #1a0000; border-color: #3d0000; }
+
+  .question-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .question-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .tag-cat { background: #0d2040; color: var(--blue); border: 1px solid #1a3a6a; }
+  .tag-easy { background: #0d2010; color: var(--green); border: 1px solid #1a4020; }
+  .tag-medium { background: #2a1a00; color: var(--yellow); border: 1px solid #5a3a00; }
+  .tag-hard { background: #200d0d; color: var(--red); border: 1px solid #5a1a1a; }
+
+  .question-text {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    padding: 14px 18px;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.15s;
+  }
+
+  .option-btn:hover:not(:disabled) { border-color: var(--green); background: #0d200d; }
+
+  .option-btn .opt-letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 18px;
+  }
+
+  .option-btn.correct { border-color: var(--green) !important; background: #0d2010 !important; color: var(--green); }
+  .option-btn.wrong { border-color: var(--red) !important; background: #200d0d !important; color: var(--red); }
+  .option-btn.correct .opt-letter { color: var(--green); }
+  .option-btn.wrong .opt-letter { color: var(--red); }
+
+  .feedback-row {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .feedback-row.show { display: flex; }
+  .feedback-correct { color: var(--green); }
+  .feedback-wrong { color: var(--red); }
+
+  .next-btn-wrap {
+    margin-top: 20px;
+    text-align: right;
+  }
+
+  /* Result screen */
+
+  .result-hero {
+    text-align: center;
+    padding: 28px 0 20px;
+  }
+
+  .result-grade {
+    font-size: 80px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .result-grade.grade-b { color: var(--blue); }
+  .result-grade.grade-c { color: var(--yellow); }
+  .result-grade.grade-d, .result-grade.grade-f { color: var(--red); }
+
+  .result-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    color: var(--muted);
+  }
+
+  .result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .stat-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .missed-section {
+    margin-top: 24px;
+  }
+
+  .missed-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .missed-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .missed-item .missed-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--red);
+    margin-bottom: 3px;
+  }
+
+  .result-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .result-actions .btn { flex: 1; }
+
+  /* Leaderboard */
+
+  .lb-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  .lb-table th {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .lb-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #0d150d;
+    color: var(--text);
+  }
+
+  .lb-table tr:last-child td { border-bottom: none; }
+
+  .rank-1 td:first-child { color: #fbbf24; }
+  .rank-2 td:first-child { color: #9ca3af; }
+  .rank-3 td:first-child { color: #b45309; }
+
+  .grade-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .gb-a { background: #0d2010; color: var(--green); }
+  .gb-b { background: #0d2040; color: var(--blue); }
+  .gb-c { background: #2a1a00; color: var(--yellow); }
+  .gb-d, .gb-f { background: #200d0d; color: var(--red); }
+
+  .nav-tabs {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .nav-tab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+
+  .nav-tab:hover { color: var(--text); border-color: var(--green-dim); }
+  .nav-tab.active { background: var(--green); color: #0a0f0a; border-color: var(--green); }
+
+  .no-scores {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Astana IT University &nbsp;·&nbsp; SE-2531</div>
+  <h1>🧠 Python Quiz App</h1>
+  <p class="subtitle">Intro to Programming 2 — Final Project</p>
+</header>
+
+<div class="container">
+
+  <!-- NAV TABS -->
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('home')">Home</button>
+    <button class="nav-tab" onclick="showTab('leaderboard')">Leaderboard</button>
+  </div>
+
+  <!-- HOME SCREEN -->
+  <div id="screen-home" class="screen active">
+    <div class="card">
+      <div class="card-title">// Start a new quiz</div>
+
+      <label>YOUR NAME</label>
+      <input type="text" id="player-name" placeholder="e.g. Sanaullah" maxlength="30">
+      <div class="error-msg" id="name-error">Name must be 2-30 letters only.</div>
+
+      <label>SELECT MODE</label>
+      <div class="mode-grid">
+        <button class="mode-btn selected" data-mode="random" onclick="selectMode(this)">
+          <span class="mode-label">🎲 Random</span>
+          <span class="mode-desc">10 random questions</span>
+        </button>
+        <button class="mode-btn" data-mode="category" onclick="selectMode(this)">
+          <span class="mode-label">📂 By Category</span>
+          <span class="mode-desc">Choose a topic</span>
+        </button>
+        <button class="mode-btn" data-mode="difficulty" onclick="selectMode(this)">
+          <span class="mode-label">📊 By Difficulty</span>
+          <span class="mode-desc">Easy / Medium / Hard</span>
+        </button>
+        <button class="mode-btn" data-mode="full" onclick="selectMode(this)">
+          <span class="mode-label">🗂️ Full Quiz</span>
+          <span class="mode-desc">All questions</span>
+        </button>
+      </div>
+
+      <div id="category-row">
+        <label>CATEGORY</label>
+        <select id="category-select"></select>
+        <br><br>
+      </div>
+
+      <div id="difficulty-row">
+        <label>DIFFICULTY</label>
+        <select id="difficulty-select">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <br><br>
+      </div>
+
+      <button class="btn" onclick="startQuiz()">Start Quiz →</button>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="screen-quiz" class="screen">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="quiz-meta">
+      <span id="question-counter">Question 1 / 10</span>
+      <span class="timer-display" id="timer-display">⏱ 15s</span>
+    </div>
+
+    <div class="question-box">
+      <div class="question-tags">
+        <span class="tag tag-cat" id="q-category">Category</span>
+        <span class="tag" id="q-difficulty">Easy</span>
+      </div>
+      <div class="question-text" id="q-text">Loading question...</div>
+      <div class="options-list" id="options-list"></div>
+
+      <div class="feedback-row" id="feedback-row">
+        <span id="feedback-icon"></span>
+        <span id="feedback-text"></span>
+      </div>
+    </div>
+
+    <div class="next-btn-wrap">
+      <button class="btn-outline hidden" id="next-btn" onclick="nextQuestion()">Next →</button>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="screen-result" class="screen">
+    <div class="card">
+      <div class="result-hero">
+        <div class="result-grade" id="result-grade">A</div>
+        <div class="result-score" id="result-score">10 / 10 correct</div>
+      </div>
+      <div class="result-stats">
+        <div class="stat-box">
+          <div class="stat-val" id="res-score">10</div>
+          <div class="stat-label">Score</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="res-pct">100%</div>
+          <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="res-grade">A</div>
+          <div class="stat-label">Grade</div>
+        </div>
+      </div>
+
+      <div class="missed-section" id="missed-section"></div>
+
+      <div class="result-actions">
+        <button class="btn" style="background:#1e2e1e; color:var(--green); border:1px solid var(--green);" onclick="showTab('home')">← Play Again</button>
+        <button class="btn" onclick="showTab('leaderboard')">Leaderboard 🏆</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD SCREEN -->
+  <div id="screen-leaderboard" class="screen">
+    <div class="card">
+      <div class="card-title">// Top Scores</div>
+      <div id="lb-content"><div class="no-scores"><span class="spinner"></span> Loading...</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let selectedMode = "random";
+let timerInterval = null;
+let timeLeft = 15;
+let questionStartTime = null;
+let currentData = null;
+
+function showTab(tab) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+  document.getElementById('screen-' + tab).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    if (t.textContent.toLowerCase().includes(tab === 'home' ? 'home' : tab)) {
+      t.classList.add('active');
+    }
+  });
+
+  if (tab === 'leaderboard') {
+    loadLeaderboard();
+  }
+
+  if (tab === 'home') {
+    stopTimer();
+    document.getElementById('player-name').value = '';
+    document.getElementById('name-error').style.display = 'none';
+  }
+}
+
+function selectMode(btn) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedMode = btn.dataset.mode;
+
+  document.getElementById('category-row').style.display = selectedMode === 'category' ? 'block' : 'none';
+  document.getElementById('difficulty-row').style.display = selectedMode === 'difficulty' ? 'block' : 'none';
+}
+
+async function loadCategories() {
+  const res = await fetch('/api/categories');
+  const data = await res.json();
+  const sel = document.getElementById('category-select');
+  sel.innerHTML = '';
+  data.categories.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = cat;
+    sel.appendChild(opt);
+  });
+}
+
+async function startQuiz() {
+  const name = document.getElementById('player-name').value.trim();
+  const errEl = document.getElementById('name-error');
+  errEl.style.display = 'none';
+
+  const payload = { name: name, mode: selectedMode };
+  if (selectedMode === 'category') {
+    payload.category = document.getElementById('category-select').value;
+  }
+  if (selectedMode === 'difficulty') {
+    payload.difficulty = document.getElementById('difficulty-select').value;
+  }
+
+  const res = await fetch('/api/start', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    errEl.textContent = data.error;
+    errEl.style.display = 'block';
+    return;
+  }
+
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-quiz').classList.add('active');
+
+  await loadQuestion();
+}
+
+async function loadQuestion() {
+  const res = await fetch('/api/question');
+  const data = await res.json();
+
+  if (data.done) {
+    await showResult();
+    return;
+  }
+
+  currentData = data;
+  const total = data.total;
+  const index = data.index;
+
+  document.getElementById('progress-bar').style.width = ((index / total) * 100) + '%';
+  document.getElementById('question-counter').textContent = `Question ${index + 1} / ${total}`;
+  document.getElementById('q-category').textContent = data.category;
+
+  const diffEl = document.getElementById('q-difficulty');
+  diffEl.textContent = data.difficulty.charAt(0).toUpperCase() + data.difficulty.slice(1);
+  diffEl.className = 'tag tag-' + data.difficulty;
+
+  document.getElementById('q-text').textContent = data.text;
+
+  const letters = ['A', 'B', 'C', 'D'];
+  const optionsList = document.getElementById('options-list');
+  optionsList.innerHTML = '';
+  data.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="opt-letter">${letters[i]}</span>${opt}`;
+    btn.onclick = () => submitAnswer(i);
+    optionsList.appendChild(btn);
+  });
+
+  document.getElementById('feedback-row').className = 'feedback-row';
+  document.getElementById('next-btn').classList.add('hidden');
+
+  startTimer();
+  questionStartTime = Date.now();
+}
+
+function startTimer() {
+  stopTimer();
+  timeLeft = 15;
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimerDisplay();
+    if (timeLeft <= 0) {
+      stopTimer();
+      autoSkip();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('timer-display');
+  el.textContent = `⏱ ${timeLeft}s`;
+  el.className = timeLeft <= 5 ? 'timer-display danger' : 'timer-display';
+}
+
+function autoSkip() {
+  submitAnswer(-1);
+}
+
+async function submitAnswer(selected) {
+  stopTimer();
+  const timeTaken = questionStartTime ? (Date.now() - questionStartTime) / 1000 : 0;
+
+  document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+
+  const res = await fetch('/api/answer', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ selected: selected, time_taken: timeTaken })
+  });
+
+  const data = await res.json();
+
+  const optionBtns = document.querySelectorAll('.option-btn');
+  optionBtns[data.correct_index].classList.add('correct');
+
+  const feedbackRow = document.getElementById('feedback-row');
+  const feedbackIcon = document.getElementById('feedback-icon');
+  const feedbackText = document.getElementById('feedback-text');
+
+  if (selected === -1) {
+    feedbackIcon.textContent = '⏰';
+    feedbackText.textContent = `Time up! Correct: ${data.correct_answer}`;
+    feedbackRow.className = 'feedback-row show feedback-wrong';
+  } else if (data.correct) {
+    if (selected < optionBtns.length) optionBtns[selected].classList.add('correct');
+    feedbackIcon.textContent = '✅';
+    feedbackText.textContent = `Correct! (${timeTaken.toFixed(1)}s)`;
+    feedbackRow.className = 'feedback-row show feedback-correct';
+  } else {
+    if (selected < optionBtns.length) optionBtns[selected].classList.add('wrong');
+    feedbackIcon.textContent = '❌';
+    feedbackText.textContent = `Wrong! Correct: ${data.correct_answer}`;
+    feedbackRow.className = 'feedback-row show feedback-wrong';
+  }
+
+  document.getElementById('next-btn').classList.remove('hidden');
+}
+
+async function nextQuestion() {
+  await loadQuestion();
+}
+
+async function showResult() {
+  const res = await fetch('/api/result');
+  const data = await res.json();
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('screen-result').classList.add('active');
+
+  const gradeEl = document.getElementById('result-grade');
+  gradeEl.textContent = data.grade;
+  gradeEl.className = 'result-grade grade-' + data.grade.toLowerCase();
+
+  document.getElementById('result-score').textContent = `${data.score} / ${data.total} correct`;
+  document.getElementById('res-score').textContent = `${data.score}/${data.total}`;
+  document.getElementById('res-pct').textContent = data.percentage + '%';
+  document.getElementById('res-grade').textContent = data.grade;
+
+  const progress = document.getElementById('progress-bar');
+  progress.style.width = '100%';
+
+  const missedSection = document.getElementById('missed-section');
+  if (data.wrong && data.wrong.length > 0) {
+    let html = `<div class="missed-title">Missed Questions (${data.wrong.length})</div>`;
+    data.wrong.forEach(w => {
+      html += `<div class="missed-item"><div class="missed-cat">${w.category}</div>${w.question}</div>`;
+    });
+    missedSection.innerHTML = html;
+  } else {
+    missedSection.innerHTML = '';
+  }
+}
+
+async function loadLeaderboard() {
+  document.getElementById('lb-content').innerHTML = '<div class="no-scores"><span class="spinner"></span> Loading...</div>';
+  const res = await fetch('/api/leaderboard');
+  const data = await res.json();
+
+  const scores = data.scores;
+  if (!scores || scores.length === 0) {
+    document.getElementById('lb-content').innerHTML = '<div class="no-scores">No scores yet. Play a quiz first!</div>';
+    return;
+  }
+
+  let html = '<table class="lb-table"><thead><tr>';
+  html += '<th>#</th><th>Name</th><th>Score</th><th>Grade</th><th>Mode</th><th>Date</th>';
+  html += '</tr></thead><tbody>';
+
+  scores.forEach((r, i) => {
+    const rankClass = i < 3 ? `rank-${i + 1}` : '';
+    const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i + 1);
+    const gbClass = 'gb-' + r.grade.toLowerCase();
+    html += `<tr class="${rankClass}">
+      <td>${medal}</td>
+      <td>${r.name}</td>
+      <td>${r.percentage}%</td>
+      <td><span class="grade-badge ${gbClass}">${r.grade}</span></td>
+      <td>${r.mode}</td>
+      <td>${r.timestamp.split(' ')[0]}</td>
+    </tr>`;
+  });
+
+  html += '</tbody></table>';
+  document.getElementById('lb-content').innerHTML = html;
+}
+
+// Init
+loadCategories();
+</script>
+</body>
+</html>

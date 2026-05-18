@@ -1,0 +1,802 @@
+[
+  {
+    "id": 1,
+    "category": "Python Basics",
+    "question": "What is the correct way to create a list in Python?",
+    "options": ["list = (1, 2, 3)", "list = [1, 2, 3]", "list = {1, 2, 3}", "list = <1, 2, 3>"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 2,
+    "category": "Python Basics",
+    "question": "Which of these is an immutable data type?",
+    "options": ["List", "Dictionary", "Set", "Tuple"],
+    "answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 3,
+    "category": "Python Basics",
+    "question": "How do you start a comment in Python?",
+    "options": ["//", "/*", "#", "--"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 4,
+    "category": "Python Basics",
+    "question": "What is the result of 3 ** 2?",
+    "options": ["6", "9", "5", "1"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 5,
+    "category": "Python Basics",
+    "question": "Which function is used to get the length of a list?",
+    "options": ["size()", "count()", "len()", "length()"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 6,
+    "category": "Python Basics",
+    "question": "What is the output of print(bool(0))?",
+    "options": ["True", "False", "None", "Error"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 7,
+    "category": "Python Basics",
+    "question": "Which method is used to remove whitespace from both ends of a string?",
+    "options": ["strip()", "trim()", "cut()", "clean()"],
+    "answer": 0,
+    "difficulty": "medium"
+  },
+  {
+    "id": 8,
+    "category": "Python Basics",
+    "question": "How do you create a dictionary?",
+    "options": ["{}", "[]", "()", "<>"],
+    "answer": 0,
+    "difficulty": "easy"
+  },
+  {
+    "id": 9,
+    "category": "Python Basics",
+    "question": "What does 'pip' stand for in Python?",
+    "options": ["Python Install Program", "Pip Installs Packages", "Preferred Installer Program", "Package Interface Python"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 10,
+    "category": "Python Basics",
+    "question": "Which statement is used to exit a loop?",
+    "options": ["stop", "exit", "break", "return"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 11,
+    "category": "ICT",
+    "question": "What does CPU stand for?",
+    "options": ["Central Process Unit", "Computer Personal Unit", "Central Processing Unit", "Central Processor Utilities"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 12,
+    "category": "ICT",
+    "question": "Which of these is a volatile memory?",
+    "options": ["ROM", "Hard Drive", "SSD", "RAM"],
+    "answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 13,
+    "category": "ICT",
+    "question": "What is the main protocol used for the World Wide Web?",
+    "options": ["FTP", "SMTP", "HTTP", "TCP"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 14,
+    "category": "ICT",
+    "question": "A byte consists of how many bits?",
+    "options": ["4", "8", "16", "32"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 15,
+    "category": "ICT",
+    "question": "Which device is used to connect a computer to a network via a phone line?",
+    "options": ["Router", "Switch", "Modem", "Hub"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 16,
+    "category": "ICT",
+    "question": "What does BIOS stand for?",
+    "options": ["Basic Input Output System", "Binary Input Operating System", "Basic Integrated Operating Setup", "Business Input Output System"],
+    "answer": 0,
+    "difficulty": "medium"
+  },
+  {
+    "id": 17,
+    "category": "ICT",
+    "question": "Which of the following is an Operating System?",
+    "options": ["Google", "Linux", "Microsoft Office", "Intel"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 18,
+    "category": "ICT",
+    "question": "What is the shortcut for 'Paste' in Windows?",
+    "options": ["Ctrl+P", "Ctrl+X", "Ctrl+C", "Ctrl+V"],
+    "answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 19,
+    "category": "ICT",
+    "question": "Which port is used for web traffic (HTTP) by default?",
+    "options": ["21", "25", "80", "443"],
+    "answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 20,
+    "category": "ICT",
+    "question": "What is the primary function of a Firewall?",
+    "options": ["Speed up internet", "Monitor network traffic", "Cool down hardware", "Store passwords"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 21,
+    "category": "General Knowledge",
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 22,
+    "category": "General Knowledge",
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Van Gogh", "Picasso", "Leonardo da Vinci", "Claude Monet"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 23,
+    "category": "General Knowledge",
+    "question": "What is the chemical symbol for Gold?",
+    "options": ["Gd", "Ag", "Au", "Fe"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 24,
+    "category": "General Knowledge",
+    "question": "Which is the largest ocean on Earth?",
+    "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
+    "answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 25,
+    "category": "General Knowledge",
+    "question": "In which year did World War II end?",
+    "options": ["1943", "1944", "1945", "1946"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 26,
+    "category": "General Knowledge",
+    "question": "What is the capital city of Japan?",
+    "options": ["Seoul", "Beijing", "Tokyo", "Bangkok"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 27,
+    "category": "General Knowledge",
+    "question": "Which animal is the largest mammal in the world?",
+    "options": ["Elephant", "Blue Whale", "Giraffe", "Shark"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 28,
+    "category": "General Knowledge",
+    "question": "How many continents are there?",
+    "options": ["5", "6", "7", "8"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 29,
+    "category": "General Knowledge",
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["Charles Dickens", "Mark Twain", "William Shakespeare", "Jane Austen"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 30,
+    "category": "General Knowledge",
+    "question": "What is the smallest country in the world?",
+    "options": ["Monaco", "Vatican City", "Malta", "San Marino"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 31,
+    "category": "English Test",
+    "question": "Which of these is a synonym for 'Happy'?",
+    "options": ["Melancholy", "Joyful", "Angry", "Tired"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 32,
+    "category": "English Test",
+    "question": "Identify the verb: 'The quick brown fox jumps over the lazy dog.'",
+    "options": ["Quick", "Brown", "Fox", "Jumps"],
+    "answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 33,
+    "category": "English Test",
+    "question": "What is the plural of 'Child'?",
+    "options": ["Childs", "Children", "Childrens", "Childes"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 34,
+    "category": "English Test",
+    "question": "Which word is spelled correctly?",
+    "options": ["Accomodate", "Acommodate", "Accommodate", "Acomodate"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 35,
+    "category": "English Test",
+    "question": "What is a person who writes a book called?",
+    "options": ["Author", "Editor", "Publisher", "Reader"],
+    "answer": 0,
+    "difficulty": "easy"
+  },
+  {
+    "id": 36,
+    "category": "English Test",
+    "question": "Choose the correct preposition: 'I am interested ___ learning Python.'",
+    "options": ["on", "at", "in", "for"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 37,
+    "category": "English Test",
+    "question": "What is the past tense of 'Go'?",
+    "options": ["Goed", "Gone", "Went", "Going"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 38,
+    "category": "English Test",
+    "question": "Which is an adjective?",
+    "options": ["Run", "Beautiful", "Table", "Quickly"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 39,
+    "category": "English Test",
+    "question": "Identify the conjunction: 'I like coffee and tea.'",
+    "options": ["I", "Like", "And", "Tea"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 40,
+    "category": "English Test",
+    "question": "What is the antonym of 'Generous'?",
+    "options": ["Kind", "Selfish", "Happy", "Rich"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 41,
+    "category": "IQ Checking",
+    "question": "Which number comes next in the series: 2, 4, 8, 16, ...?",
+    "options": ["20", "24", "32", "64"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 42,
+    "category": "IQ Checking",
+    "question": "If 5 apples cost $10, how much do 8 apples cost?",
+    "options": ["$12", "$14", "$16", "$18"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 43,
+    "category": "IQ Checking",
+    "question": "Book is to Reading as Fork is to...?",
+    "options": ["Writing", "Eating", "Cooking", "Cutting"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 44,
+    "category": "IQ Checking",
+    "question": "Which word does not belong with the others?",
+    "options": ["Apple", "Banana", "Carrot", "Grape"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 45,
+    "category": "IQ Checking",
+    "question": "If you rearrange the letters 'CIFAIPC', you get the name of a(n):",
+    "options": ["City", "Animal", "Ocean", "Country"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 46,
+    "category": "IQ Checking",
+    "question": "What is 1/2 of 1/4 of 80?",
+    "options": ["5", "10", "20", "40"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 47,
+    "category": "IQ Checking",
+    "question": "Find the odd one out:",
+    "options": ["Square", "Triangle", "Circle", "Cube"],
+    "answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 48,
+    "category": "IQ Checking",
+    "question": "Which number is 1/4 of 1/10 of 400?",
+    "options": ["2", "5", "10", "20"],
+    "answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 49,
+    "category": "IQ Checking",
+    "question": "If 'RED' is coded as '27', what is 'BLUE' coded as?",
+    "options": ["35", "40", "42", "45"],
+    "answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 50,
+    "category": "IQ Checking",
+    "question": "A doctor gives you 3 pills and tells you to take one every half hour. How long will the pills last?",
+    "options": ["30 mins", "60 mins", "90 mins", "120 mins"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 51,
+    "category": "EQ Checking",
+    "question": "When a friend is upset, the best first response is to:",
+    "options": ["Tell them they are overreacting", "Listen and validate their feelings", "Give them advice immediately", "Change the subject"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 52,
+    "category": "EQ Checking",
+    "question": "Self-awareness is the ability to:",
+    "options": ["Control others", "Recognize your own emotions", "Always be happy", "Read books fast"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 53,
+    "category": "EQ Checking",
+    "question": "Empathy is:",
+    "options": ["Feeling sorry for someone", "Understanding and sharing the feelings of another", "Judging someone's choices", "Ignoring others' pain"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 54,
+    "category": "EQ Checking",
+    "question": "If you receive negative feedback at work, you should:",
+    "options": ["Get angry and quit", "Ignore it", "Reflect on it and seek improvement", "Blame your coworkers"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 55,
+    "category": "EQ Checking",
+    "question": "Emotional Intelligence (EQ) is generally considered:",
+    "options": ["Less important than IQ", "Unchangeable", "The ability to manage emotions effectively", "A sign of weakness"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 56,
+    "category": "EQ Checking",
+    "question": "When you are angry, 'taking a pause' helps to:",
+    "options": ["Win the argument", "Prevent an impulsive reaction", "Make the other person wait", "Hide your feelings forever"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 57,
+    "category": "EQ Checking",
+    "question": "Conflict resolution involves:",
+    "options": ["Winning at all costs", "Finding a mutually acceptable solution", "Avoiding the person forever", "Proving you are right"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 58,
+    "category": "EQ Checking",
+    "question": "A person with high EQ is likely to:",
+    "options": ["Be easily manipulated", "Handle stress well", "Never feel sad", "Avoid all social interaction"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 59,
+    "category": "EQ Checking",
+    "question": "Active listening includes:",
+    "options": ["Thinking of what to say next", "Making eye contact and nodding", "Interrupting with your own story", "Checking your phone"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 60,
+    "category": "EQ Checking",
+    "question": "Social skills in EQ refer to:",
+    "options": ["Having many followers on social media", "Managing relationships and building networks", "Being the loudest in a room", "Attending every party"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 61,
+    "category": "Python Basics",
+    "question": "Which of these is used to handle exceptions in Python?",
+    "options": ["try/except", "if/else", "do/while", "catch/throw"],
+    "answer": 0,
+    "difficulty": "medium"
+  },
+  {
+    "id": 62,
+    "category": "Python Basics",
+    "question": "What is the output of 10 // 3?",
+    "options": ["3.33", "3", "1", "4"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 63,
+    "category": "ICT",
+    "question": "What does SQL stand for?",
+    "options": ["Structured Query Language", "Simple Query List", "System Quality Log", "Standard Query Level"],
+    "answer": 0,
+    "difficulty": "medium"
+  },
+  {
+    "id": 64,
+    "category": "ICT",
+    "question": "Which layer of the OSI model is responsible for routing?",
+    "options": ["Physical", "Data Link", "Network", "Transport"],
+    "answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 65,
+    "category": "General Knowledge",
+    "question": "How many teeth does an adult human typically have?",
+    "options": ["28", "30", "32", "34"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 66,
+    "category": "General Knowledge",
+    "question": "What is the hardest natural substance on Earth?",
+    "options": ["Gold", "Iron", "Diamond", "Platinum"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 67,
+    "category": "English Test",
+    "question": "Which of these is a 'homophone' for 'Hear'?",
+    "options": ["Hair", "Here", "Heir", "Her"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 68,
+    "category": "English Test",
+    "question": "A collection of lions is called a:",
+    "options": ["Pack", "Herd", "Pride", "School"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 69,
+    "category": "IQ Checking",
+    "question": "Complete the sequence: J, F, M, A, M, J, ...?",
+    "options": ["S", "A", "J", "O"],
+    "answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 70,
+    "category": "IQ Checking",
+    "question": "How many months have 28 days?",
+    "options": ["1", "6", "12", "Depend on year"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 71,
+    "category": "EQ Checking",
+    "question": "When you fail at a task, an emotionally intelligent person would:",
+    "options": ["Blame the tools", "Analyze what went wrong and learn", "Never try again", "Pretend it didn't happen"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 72,
+    "category": "EQ Checking",
+    "question": "What is the benefit of a diverse team in terms of EQ?",
+    "options": ["More arguments", "Different perspectives and higher empathy", "Harder to manage", "Lower productivity"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 73,
+    "category": "ICT",
+    "question": "What does PDF stand for?",
+    "options": ["Personal Data File", "Portable Document Format", "Printable Document File", "Private Digital Form"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 74,
+    "category": "ICT",
+    "question": "Which company developed the Java programming language?",
+    "options": ["Microsoft", "Apple", "Sun Microsystems", "Google"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 75,
+    "category": "General Knowledge",
+    "question": "Which country is home to the Kangaroo?",
+    "options": ["India", "South Africa", "Australia", "Brazil"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 76,
+    "category": "General Knowledge",
+    "question": "What is the largest country by land area?",
+    "options": ["China", "USA", "Russia", "Canada"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 77,
+    "category": "Python Basics",
+    "question": "What does 'None' represent in Python?",
+    "options": ["Zero", "False", "The absence of a value", "An empty string"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 78,
+    "category": "Python Basics",
+    "question": "Which of these is used for a multi-line string?",
+    "options": ["///", "\"\"\"", "###", "---"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 79,
+    "category": "English Test",
+    "question": "Identify the proper noun: 'London is a big city.'",
+    "options": ["London", "Big", "City", "Is"],
+    "answer": 0,
+    "difficulty": "easy"
+  },
+  {
+    "id": 80,
+    "category": "English Test",
+    "question": "What is the superlative form of 'Good'?",
+    "options": ["Gooder", "Better", "Best", "Goodest"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 81,
+    "category": "IQ Checking",
+    "question": "What is the next prime number after 7?",
+    "options": ["9", "10", "11", "13"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 82,
+    "category": "IQ Checking",
+    "question": "If all Bloops are Razzies and all Razzies are Lazzies, then all Bloops are definitely Lazzies.",
+    "options": ["True", "False", "Not enough info", "Only on Tuesdays"],
+    "answer": 0,
+    "difficulty": "medium"
+  },
+  {
+    "id": 83,
+    "category": "EQ Checking",
+    "question": "Which is a sign of high 'Social Awareness'?",
+    "options": ["Talking about yourself", "Picking up on 'vibe' of a room", "Ignoring social cues", "Correcting everyone's grammar"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 84,
+    "category": "EQ Checking",
+    "question": "Being 'authentic' means:",
+    "options": ["Acting like someone else", "Being true to your own values and personality", "Always being perfect", "Never showing emotion"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 85,
+    "category": "ICT",
+    "question": "What is the binary representation of the decimal number 5?",
+    "options": ["100", "101", "110", "111"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 86,
+    "category": "ICT",
+    "question": "Which of the following is an input device?",
+    "options": ["Monitor", "Printer", "Scanner", "Speaker"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 87,
+    "category": "General Knowledge",
+    "question": "What is the capital of France?",
+    "options": ["Rome", "Madrid", "Berlin", "Paris"],
+    "answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 88,
+    "category": "General Knowledge",
+    "question": "Which gas do plants absorb from the atmosphere?",
+    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 89,
+    "category": "Python Basics",
+    "question": "What is a lambda function?",
+    "options": ["A large function", "An anonymous one-line function", "A function that returns a list", "A recursive function"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 90,
+    "category": "Python Basics",
+    "question": "How do you start a while loop in Python?",
+    "options": ["while x > y {", "while (x > y)", "while x > y:", "while x > y;"],
+    "answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 91,
+    "category": "English Test",
+    "question": "Which of these is a 'compound word'?",
+    "options": ["Running", "Sunflower", "Happy", "Briefly"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 92,
+    "category": "English Test",
+    "question": "What does the idiom 'Piece of cake' mean?",
+    "options": ["Something very tasty", "Something very easy", "A small portion", "A difficult task"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 93,
+    "category": "IQ Checking",
+    "question": "If 1=5, 2=25, 3=125, then 5=?",
+    "options": ["625", "3125", "1", "25"],
+    "answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 94,
+    "category": "IQ Checking",
+    "question": "What has keys but can't open locks?",
+    "options": ["A door", "A piano", "A safe", "A box"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 95,
+    "category": "EQ Checking",
+    "question": "Which of the following describes 'intrinsic motivation'?",
+    "options": ["Working for money", "Working because you enjoy the task", "Working to avoid punishment", "Working for praise"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 96,
+    "category": "EQ Checking",
+    "question": "To manage stress effectively, one should:",
+    "options": ["Drink more coffee", "Practice mindfulness and relaxation", "Work 24/7", "Ignore the stress"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 97,
+    "category": "ICT",
+    "question": "What is the primary purpose of an IP address?",
+    "options": ["To measure internet speed", "To identify a device on a network", "To encrypt data", "To store cookies"],
+    "answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 98,
+    "category": "ICT",
+    "question": "What does RAM stand for?",
+    "options": ["Read Access Memory", "Random Access Memory", "Ready Application Module", "Real-time Access Method"],
+    "answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 99,
+    "category": "General Knowledge",
+    "question": "Which element has the atomic number 1?",
+    "options": ["Helium", "Oxygen", "Hydrogen", "Carbon"],
+    "answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 100,
+    "category": "General Knowledge",
+    "question": "Who is the founder of Microsoft?",
+    "options": ["Steve Jobs", "Bill Gates", "Elon Musk", "Mark Zuckerberg"],
+    "answer": 1,
+    "difficulty": "easy"
+  }
+]
